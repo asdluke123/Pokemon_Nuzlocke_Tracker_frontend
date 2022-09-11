@@ -22,7 +22,6 @@ const RunDetail = () =>{
     }
     const getRoutes = async () =>{
         try{
-            console.log('hey')
             const res = await axios.get('http://localhost:8000/api/route/') 
             setRoutes(res.data)
         }catch(e){
@@ -70,7 +69,6 @@ const RunDetail = () =>{
         try{
             const res = await axios.get(`http://localhost:8000/api/trainerteam/${curRoute}`)
             if(res.data.length != 0){
-                console.log('here')
                 let trainers = res.data.sort((a,b) => a.id - b.id)
                 let trainerRoute = []
                 let trainerTeam = []
@@ -130,9 +128,9 @@ const RunDetail = () =>{
         getPokemon()
     },[curRoute])
     return run ?(
-        <div>
-            <h1>{run.name}</h1>
-            <h1 onClick = {() => toBox()}>Box Pokemon</h1>
+        <div id='runDetailPage'>
+            <h1 id='runName'>{run.name}</h1>
+            <h1 onClick = {() => toBox()} id='boxPokemonName'>Box Pokemon</h1>
             <select onChange={(e) => setCurRoute(e.target.value)}>
                 {
                 routes.map((route)=>(
@@ -142,10 +140,10 @@ const RunDetail = () =>{
             </select>
             {areas.length !== 0 ? <h2>Encounters</h2>: <div></div>}
                 {areas.map((area)=>(
-                    <div>
-                        <h3>{area.name}</h3>
+                    <div className="encounterArea">
+                        <h3 className="encounterName">{area.name}</h3>
                         {area.pokemon.map((pokemon) =>(
-                            <div>
+                            <div className="pokemonContainer">
                                 <Pokemon pokemon={pokemon} />
                                 <button onClick={() => createCapture(pokemon.id)}>Add to Box</button>
                             </div>
@@ -154,12 +152,10 @@ const RunDetail = () =>{
                 ))}
             {trainers.length !== 0 ? <h2>Trainers</h2>: <div></div>}
             {trainers.map((trainer)=>(
-                    <div>
-                        <h3>{trainer.name}</h3>
+                    <div className="trainerContainer">
+                        <h3 className="trainerName">{trainer.name}</h3>
                         {trainer.team.map((pokemon)=>(
-                            <div>
                                 <Pokemon pokemon={pokemon} />
-                            </div>
                         ))}
                     </div>
                 ))}

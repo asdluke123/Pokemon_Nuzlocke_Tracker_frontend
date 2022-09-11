@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import Run from "../componenets/Run";
 import { useParams } from "react-router-dom";
-const Runs = () =>{
+const Runs = ({user}) =>{
     const [runs,setRuns] = useState([])
     const [name,setName] = useState()
     const {gameId} = useParams()
@@ -11,7 +11,13 @@ const Runs = () =>{
     const getRuns = async () =>{
         try{
             const res = await axios.get(`http://localhost:8000/api/run/`)
-            setRuns(res.data)
+            let temp = []
+            res.data.forEach((data)=>{
+                if(data.userId.id === user.id){
+                    temp.push(data)    
+                }
+            })
+            setRuns(temp)
         }catch(e){
             console.error(e)
         }
@@ -33,7 +39,7 @@ const Runs = () =>{
                 const res = await axios.post('http://localhost:8000/api/createrun/',{
                     name : name,
                     gameId : gameId,
-                    userId : 1
+                    userId : user.id
                 })
                 const newRuns = [...runs]
                 newRuns.push(res.data)
@@ -42,6 +48,16 @@ const Runs = () =>{
         }catch(e){
             console.error(e)
         }
+    }
+    const setComplete = async (e,runId,index) =>{
+        await axios.put(`http://localhost:8000/api/run/${runId}`,{
+            name:runs[index].name,
+            isComplete: e.target.checked
+        })
+        let temp = [...runs]
+        let tempObj = [temp[index]]
+        tempObj.isComplete = e.target.checked
+        setRuns(temp)
     }
     const toRunDetail = (runId) =>{
         navigate(`run/${runId}`)
@@ -60,7 +76,7 @@ const Runs = () =>{
             </div>
             {
                 runs.map((run,index)=>(
-                    <Run run={run} deleteRun={deleteRun} index={index} toRunDetail = {toRunDetail}/>
+                    <Run run={run} deleteRun={deleteRun} index={index} toRunDetail = {toRunDetail} social={false} setComplete={setComplete}/>
                 ))
             }
 

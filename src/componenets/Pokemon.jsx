@@ -7,11 +7,11 @@ const Pokemon = ({pokemon}) =>{
     upperCase = upperCase.toUpperCase()
     let pokemonName = setCharAt(pokemon.name,0,upperCase)
     return(
-        <div>
-            <img src = {pokemon.sprite} />
-            <h3>{pokemonName}</h3>
-            {pokemon.level ? <h4>{pokemon.level}</h4>:<div></div>}
-            {pokemon.moves ? <ul>{pokemon.moves.map((move)=>(<li>{move}</li>))}</ul>:<div> </div>}
+        <div className="pokemon">
+            <img src = {pokemon.sprite} className='pokemonImage'/>
+            <h3 className="pokemonName">{pokemonName}</h3>
+            {pokemon.level ? <h4 className="pokekmonLevel">{pokemon.level}</h4>:<div></div>}
+            {pokemon.moves ? <ul className="pokemonMoves">{pokemon.moves.map((move)=>(<li className="pokemonMove">{move}</li>))}</ul>:<div> </div>}
         </div>
     )
 }
