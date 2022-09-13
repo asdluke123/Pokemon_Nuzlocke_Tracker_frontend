@@ -19,6 +19,7 @@ const Box = () =>{
     },[])
 return(
     <div>
+        
         {pokemons.map((pokemon) =>(
             <div>
                 <Pokemon pokemon={pokemon.pokemonId} />

@@ -14,7 +14,7 @@ const Runs = ({user}) =>{
             const res = await axios.get(`https://radiant-falls-59551.herokuapp.com/api/run/`)
             let temp = []
             res.data.forEach((data)=>{
-                if(data.userId.id === user.id){
+                if(data.userId.id === parseInt(user.id)){
                     temp.push(data)    
                 }
             })
@@ -67,21 +67,24 @@ const Runs = ({user}) =>{
         getRuns()
     },[])
     return(
+    <div className="runPage">
+        <h1 id="runTitle">Runs</h1>
         <div className="runContainer">
-           <h1>Runs</h1>
             <div className="createRunForm" >
-                <form onSubmit={(e) => createRun(e)}>
-                        <input type='text' placeholder="Run Name" value={name} onChange = {(e)=> setName(e.target.value)}></input>
-                        <button type="submit">Create Run</button>
-                </form>
+                <h2>Create Run</h2>
+                        <input id ='runInput' type='text' placeholder="Run Name" value={name} onChange = {(e)=> setName(e.target.value)}></input>
+                        <button onClick={(e) => createRun(e)}>Create Run</button>
             </div>
+            <div id ='runArea'>
             {
                 runs.map((run,index)=>(
                     <Run run={run} deleteRun={deleteRun} index={index} toRunDetail = {toRunDetail} social={false} setComplete={setComplete}/>
                 ))
             }
+            </div>
 
         </div>
+    </div>
     )
 
 }

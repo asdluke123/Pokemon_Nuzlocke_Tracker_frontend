@@ -6,7 +6,9 @@ const Nav = ({user,setUser}) =>{
        {user ?(<nav>
                 <Link to = '/'>Games</Link>
                 <Link to ='/social'>Social</Link>
-                <Link to = '/' onClick={() => setUser()}>Sign Out</Link>
+                <Link to = '/' onClick={() => { 
+                    localStorage.clear()
+                     setUser()}}>Sign Out</Link>
             </nav> 
             ):(
             <nav>

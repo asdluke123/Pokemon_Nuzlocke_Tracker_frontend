@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LogIn = ({ setUser }) => {
+const LogIn = ({ setUser,setLocal }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   const baseUrl = process.env.REACT_APP_BASE_URL
@@ -15,6 +15,7 @@ const LogIn = ({ setUser }) => {
     e.preventDefault()
     const res = await axios.get(`${baseUrl}api/login/${formValues.password}/${formValues.email}`)
     setUser({id: res.data[0].id,name:res.data[0].name})
+    setLocal(res.data[0])
     setFormValues({ email: '', password: '' })
     navigate('/')
   }
