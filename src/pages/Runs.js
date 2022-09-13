@@ -8,9 +8,10 @@ const Runs = ({user}) =>{
     const [name,setName] = useState()
     const {gameId} = useParams()
     const navigate = useNavigate()
+    const baseUrl = process.env.REACT_APP_BASE_URL
     const getRuns = async () =>{
         try{
-            const res = await axios.get(`http://localhost:8000/api/run/`)
+            const res = await axios.get(`https://radiant-falls-59551.herokuapp.com/api/run/`)
             let temp = []
             res.data.forEach((data)=>{
                 if(data.userId.id === user.id){
@@ -24,7 +25,7 @@ const Runs = ({user}) =>{
     }
     const deleteRun = (runId,index) =>{
         try{
-            axios.delete(`http://localhost:8000/api/run/${runId}`)
+            axios.delete(`${baseUrl}api/run/${runId}`)
             const oldArr = [...runs]
             oldArr.splice(index,1)
             setRuns(oldArr)
@@ -36,7 +37,7 @@ const Runs = ({user}) =>{
         e.preventDefault()
         try{
             if(name){
-                const res = await axios.post('http://localhost:8000/api/createrun/',{
+                const res = await axios.post(`${baseUrl}api/createrun/`,{
                     name : name,
                     gameId : gameId,
                     userId : user.id
@@ -50,7 +51,7 @@ const Runs = ({user}) =>{
         }
     }
     const setComplete = async (e,runId,index) =>{
-        await axios.put(`http://localhost:8000/api/run/${runId}`,{
+        await axios.put(`${baseUrl}api/run/${runId}`,{
             name:runs[index].name,
             isComplete: e.target.checked
         })

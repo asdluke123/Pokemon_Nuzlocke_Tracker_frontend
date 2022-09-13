@@ -4,12 +4,13 @@ import axios from "axios";
 import Game from "../componenets/Game";
 import Popup from "../componenets/Popup";
 const Home = ({user}) =>{
+    const baseUrl = process.env.REACT_APP_BASE_URL
     const [games,setGames] = useState([])
     const [isOpen, setIsOpen] = useState(false)
     const navigate = useNavigate()
     const getRuns = async () =>{
         try{
-            const res = await axios.get(`http://localhost:8000/api/game/`)
+            const res = await axios.get(`${baseUrl}api/game/`)
             setGames(res.data)
         }catch(e){
             console.error(e)

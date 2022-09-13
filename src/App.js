@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path = '/' element={<Home user={user} />} />
           <Route path = '/runs/:gameId/' element = {<Runs user={user} />} />
-          <Route path = 'runs/:gameId/run/:runId' element = {<RunDetail />} />
+          <Route path = 'runs/:gameId/run/:runId' element = {<RunDetail user={user} />} />
           <Route path = '/box/:runId' element = {<Box />} />
           <Route path = '/login' element = {<LogIn  setUser={setUser}/>} />
           <Route path = '/signup' element = {<SignUp />} />

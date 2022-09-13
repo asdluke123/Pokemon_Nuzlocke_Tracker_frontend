@@ -9,8 +9,10 @@ const Pokemon = ({pokemon}) =>{
     return(
         <div className="pokemon">
             <img src = {pokemon.sprite} className='pokemonImage'/>
+            <div className="trainerNameLevel">
             <h3 className="pokemonName">{pokemonName}</h3>
-            {pokemon.level ? <h4 className="pokekmonLevel">{pokemon.level}</h4>:<div></div>}
+                {pokemon.level ? <p className="pokemonLevel">Lvl: {pokemon.level}</p>:<div></div>}
+                </div>
             {pokemon.moves ? <ul className="pokemonMoves">{pokemon.moves.map((move)=>(<li className="pokemonMove">{move}</li>))}</ul>:<div> </div>}
         </div>
     )

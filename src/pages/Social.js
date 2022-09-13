@@ -3,9 +3,10 @@ import axios from "axios";
 import Run from "../componenets/Run";
 const Social = () =>{
     const [runs,setRuns] = useState([])
+    const baseUrl = process.env.REACT_APP_BASE_URL
     const getRuns = async () =>{
         try{
-            const res = await axios.get(`http://localhost:8000/api/run/`)
+            const res = await axios.get(`${baseUrl}api/run/`)
             setRuns(res.data)
         }catch(e){
             console.error(e)

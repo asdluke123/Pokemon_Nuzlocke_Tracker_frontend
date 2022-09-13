@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const SignUp = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: '',
@@ -17,7 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await axios.post('http://localhost:8000/api/createuser/',{
+    const res = await axios.post(`${baseUrl}api/createuser/`,{
       name: formValues.name,
       eMail: formValues.email,
       password: formValues.password

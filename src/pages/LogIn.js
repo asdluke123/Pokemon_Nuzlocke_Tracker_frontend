@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const LogIn = ({ setUser }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const baseUrl = process.env.REACT_APP_BASE_URL
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -12,7 +13,7 @@ const LogIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const res = await axios.get(`http://localhost:8000/api/login/${formValues.password}/${formValues.email}`)
+    const res = await axios.get(`${baseUrl}api/login/${formValues.password}/${formValues.email}`)
     setUser({id: res.data[0].id,name:res.data[0].name})
     setFormValues({ email: '', password: '' })
     navigate('/')
