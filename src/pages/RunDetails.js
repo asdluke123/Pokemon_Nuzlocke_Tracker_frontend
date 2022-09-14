@@ -172,7 +172,23 @@ const RunDetail = ({user}) =>{
         getTrainers()
         getPokemon()
     },[curRoute])
-
+ 
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+      
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+      
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          } else {
+            reveals[i].classList.remove("active");
+          }
+        }
+      }
+      window.addEventListener("scroll", reveal);
     return run ?(
         <div id='runDetailPage'>
             <h1 id='runName'>{run.name}</h1>
@@ -188,7 +204,7 @@ const RunDetail = ({user}) =>{
             {areas.length !== 0 ? <h2 className='subTitle'>ENCOUNTERS</h2>: <div></div>}
             <div className="encounterArea">
                 {areas.map((area)=>(
-                    <div className="encounter">
+                    <div className="encounter reveal">
                         <h3 className="encounterName">{area.name}</h3>
                         <div className="pokemonsContainer">
                             {area.pokemon.map((pokemon) =>(
@@ -201,10 +217,10 @@ const RunDetail = ({user}) =>{
                     </div>
                 ))}
             </div>
-            {trainers.length !== 0 ? <h2 className="subTitle">TRAINERS</h2>: <div></div>}
+            {trainers.length !== 0 ? <h2 className="subTitle reveal">TRAINERS</h2>: <div></div>}
             <div className="trainerArea">
             {trainers.map((trainer)=>(
-                    <div className="trainerContainer">
+                    <div className="trainerContainer reveal">
                         <h3 className="trainerName">{trainer.name}</h3>
                         <div className="trainerTeam">
                             {trainer.team.map((pokemon)=>(
