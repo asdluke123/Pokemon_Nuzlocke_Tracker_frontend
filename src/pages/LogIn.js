@@ -13,6 +13,7 @@ const LogIn = ({ setUser,setLocal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    e.nativeEvent.path[4].children[0].children[0].classList = 'blurRemove'
     const res = await axios.get(`${baseUrl}api/login/${formValues.password}/${formValues.email}`)
     setUser({id: res.data[0].id,name:res.data[0].name})
     setLocal(res.data[0])

@@ -6,6 +6,21 @@
 html{
     background-color: #52796f;
 }
+.blur{
+  pointer-events: none;
+  animation: blurTime 1.0s forwards;
+}
+.blurRemove{
+  animation: removeBlur 1.0s forwards;
+}
+@keyframes removeBlur {
+  0% {filter: blur(20px);}
+  100% {filter: blur(0px);}
+}
+@keyframes blurTime {
+  0% {filter: blur(0px);}
+  100% {filter: blur(20px);}
+}
 .close-icon {
     content: 'x';
     cursor: pointer;
@@ -160,6 +175,7 @@ html{
     justify-content:flex-end;
     align-items: center;
     margin-right: 1.5em;
+
   }
   .pokemon{
     text-align: center;
@@ -168,7 +184,7 @@ html{
     outline:none;
     height: 40px;
     text-align: center;
-    width: 130px;
+    width: 7em;
     border-radius:40px;
     background: #fff;
     border: 2px solid rgb(4, 71, 4);;
@@ -178,6 +194,7 @@ html{
     font:15px bold;
     cursor: pointer;
     transition: all 0.25s ease;
+    margin-bottom: 10[x];
   }
   .button:hover {
       color:white;
@@ -220,7 +237,6 @@ html{
     align-items: baseline;
   }
   .trainerPokemon{
-
     margin-right: 3em;
   }
   .pokemonLevel{
@@ -251,26 +267,171 @@ html{
     height: 100%;
     justify-content: flex-start;
   }
-  .createRunForm{
-    width: 15vw;
-    height: 20vh;
+
+  .runForm{
+    padding-top: 30px;
+    width: 10vw;
+    height: 80vh;
+    background-color:#cad2c5;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
+    box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5),inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5);
+  }
+  #createForm{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    background-color:#cad2c5;
-
+    margin-bottom: 30px;
+  }
+  #createForm h2{
+    margin-bottom: .5em;
+  }
+  #updateForm h2{
+    margin-bottom: .5em ;
   }
   form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#cad2c5;
+    justify-content: space-between;
   }
   .runPage{
     width: 100%;
-    height: 93.3vh;
+    height: 90%
   }
   #runInput{
-    
+    width:8vw;
+    margin-bottom: 10px;
   }
+  #runArea{
+    width: 85vw;
+    height: 100%;
+    margin-left: 3em;
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+  nav{
+    display: flex;
+    height: 4.5vh;
+    background-color: #cad2c5;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);;
+  }
+  a{
+    color: #000000;
+    margin-left: 0.5em;
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform .6s ease-out,color .3s;
+  }
+  a:hover{
+    transform: translateY(-4px);
+    color: rgb(255, 226, 64) ;
+  }
+  nav div{
+    margin-left: 1em;
+    margin-right: 2em;
+  }
+  .numbers{
+    width: 8vw;
+    margin-bottom: 8px;
+  }
+  #updateSelect{
+    width: 8vw;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .run{
+    width: 13%;
+    background-color: white;
+    height: 16vh;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: .5em;
+    box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);;
+    margin-bottom: 1em;
+  }
+  .knowledge{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+  }
+  .knowledge h4{
+    font-size: 1.2rem;
+    margin-right: 9px;
+  }
+  .knowledge input{
+    position: relative;
+    margin-left: 5px;
+    top: 2px
+  }
+  .runTitleArea{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .runTitleArea h2{
+    margin-left: 9px;
+  }
+  .runTitleArea h2:hover{
+    margin-left: 9px;
+  }
+  .checkArea{
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8px;
+  }
+  .checkArea p{
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .deleteRun{
+    width: 40%;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    outline:none;
+    text-align: center;
+    border-radius:40px;
+    background: #fff;
+    border: 2px solid rgb(190, 14, 14);;
+    color:rgb(190, 14, 14);;
+    letter-spacing:1px;
+    text-shadow:0;
+    font:15px bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .deleteRun:hover {
+      color:white;
+      background: rgb(190, 14, 14);
+  }
+  .deleteRun:active {
+      letter-spacing: 2px ;
+    }
+    #runTitle{
+      font-size: 3.5em;
+      margin-bottom: .2em;
+      color: #FFFFFF;
+    }
+    .runName{
+      transition: transform .6s ease-out,color .5s;
+      font-size: 2em;
+      width: 100%;
+    }
+    .runName:hover{
+      cursor: pointer;
+      transform: translateY(-3px);
+      color: rgb(94, 169, 255) ;
+    }
+    
+  
+  

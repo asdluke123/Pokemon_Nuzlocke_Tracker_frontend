@@ -23,7 +23,7 @@ const Home = ({user}) =>{
         navigate(`/runs/${gameId}`)
     }
     const navigateRegister = () => {
-        navigate('/register')
+        navigate('/signup')
       }
     
       const navigateLogin = () => {
@@ -31,20 +31,22 @@ const Home = ({user}) =>{
       }
     
     const togglePopup = (e, value) => {
+      console.log(e)
         if(!user){
           setIsOpen(!isOpen)
           if(value){
-          const playlistBlur = e.nativeEvent.path[4]
-          const titleBlur = e.nativeEvent.path[5].children.title
+          const playlistBlur = e.nativeEvent.path[7].children[0].children[0]
+            const titleBlur = e.nativeEvent.path[4]
+            console.log(titleBlur)
           if(playlistBlur.classList.contains('blurRemove') && titleBlur.classList.contains('blurRemove')){
-            playlistBlur.classList.remove("blurRemove")
+            playlistBlur.classList.remove('blurRemove')
             titleBlur.classList.remove("blurRemove")
           }
           playlistBlur.classList.add("blur")
           titleBlur.classList.add("blur") 
         } else {
-          const playlistBlur = e.nativeEvent.path[3].children.homePlaylistContainer
-          const titleBlur = e.nativeEvent.path[3].children.title
+          const playlistBlur = e.nativeEvent.path[5].children[0].children[0]
+          const titleBlur = e.nativeEvent.path[4].children[0].children[1]
           if(playlistBlur.classList.contains('blur') && titleBlur.classList.contains('blur')){
             playlistBlur.classList.remove("blur")
             titleBlur.classList.remove("blur")
@@ -55,9 +57,8 @@ const Home = ({user}) =>{
         }
       }
     return(
-        <div className="gameContainer">
-           <h1>Games</h1>
-           {isOpen ?(
+    <div>
+      {isOpen ?(
         <Popup
           content={
               <div id="popup">
@@ -77,6 +78,8 @@ const Home = ({user}) =>{
           handleClose={togglePopup}
         />
       ): <span></span>}
+        <div className="gameContainer">
+           <h1>Games</h1>
             <div className="gamesContainer">
                 {games.map((game)=>(
                     <div>
@@ -86,6 +89,7 @@ const Home = ({user}) =>{
             </div>
 
         </div>
+    </div>
     )
 
 }

@@ -18,6 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    e.nativeEvent.path[4].children[0].children[0].classList = 'blurRemove'
     const res = await axios.post(`${baseUrl}api/createuser/`,{
       name: formValues.name,
       eMail: formValues.email,
