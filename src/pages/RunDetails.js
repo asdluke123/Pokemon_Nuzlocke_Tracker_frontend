@@ -6,7 +6,7 @@ const RunDetail = ({user}) =>{
     const [run,setRun] = useState()
     const [gotStuff,setGotStuff] = useState(true)
     const [areas,setAreas] = useState([])
-    const [curRoute,setCurRoute] = useState(499)
+    const [curRoute,setCurRoute] = useState(0)
     const [routes,setRoutes] = useState([])
     const [trainers,setTrainers]= useState([])
     const baseUrl = process.env.REACT_APP_BASE_URL
@@ -178,6 +178,7 @@ const RunDetail = ({user}) =>{
             <h1 id='runName'>{run.name}</h1>
             <h1   id='boxPokemonName' onClick = {() => toBox()}>Box Pokemon</h1>
             <select  onChange={(e) => setCurRoute(e.target.value)}>
+                <option value = ''>Pick your route</option>
                 {
                 routes.map((route)=>(
                     <option value = {route.id}>{route.name}</option>
