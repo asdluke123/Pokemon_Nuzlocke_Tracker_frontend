@@ -13,7 +13,6 @@ const RunDetail = ({user}) =>{
     const {runId} = useParams()
     const navigate = useNavigate()
     const getRun = async () =>{
-        console.log(baseUrl)
         try{
             const res = await axios.get(`${baseUrl}api/run/${runId}`)
             setRun(res.data)

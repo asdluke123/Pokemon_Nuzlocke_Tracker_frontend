@@ -16,13 +16,15 @@ const Social = () =>{
         getRuns()
     },[])
     return(
-        <div>
+        <div className="socailPage">
             <h1>Social</h1>
+            <div className="socailArea">
             {
-                runs.map((run)=>(
+                    runs.map((run)=>(
                     <Run run={run} social={true}/>
                 ))
             }
+            </div>
         </div>
     )
 }

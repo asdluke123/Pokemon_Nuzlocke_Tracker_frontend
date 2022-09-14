@@ -79,12 +79,11 @@ const Home = ({user}) =>{
         />
       ): <span></span>}
         <div className="gameContainer">
-           <h1>Games</h1>
+          <h1>PokeRun</h1>
+           <h2>Games</h2>
             <div className="gamesContainer">
                 {games.map((game)=>(
-                    <div>
                         <Game name={game.name} photo={game.photo} game={game} toRuns={toRuns} user={user} togglePopup={togglePopup}/>
-                    </div>
                     ))}
             </div>
 
