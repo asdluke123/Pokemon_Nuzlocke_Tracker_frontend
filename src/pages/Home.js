@@ -64,7 +64,7 @@ const Home = ({user}) =>{
                 x
               </span>
                 <div id="SignUp">
-                  <h4>Join Starred to keep track of your favorite songs and playlists </h4>         
+                  <h4>Join PokiRun to keep track of your Pokemon runs</h4>         
                     <button onClick={navigateRegister} className="popUpButtons">Sign Up</button>
                 </div>
                 <div id="SignIn">
