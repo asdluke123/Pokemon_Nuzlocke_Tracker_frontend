@@ -31,13 +31,11 @@ const Home = ({user}) =>{
       }
     
     const togglePopup = (e, value) => {
-      console.log(e)
         if(!user){
           setIsOpen(!isOpen)
           if(value){
-          const playlistBlur = e.nativeEvent.path[7].children[0].children[0]
-            const titleBlur = e.nativeEvent.path[4]
-            console.log(titleBlur)
+          const playlistBlur = e.nativeEvent.path[6].children[0].children[0]
+            const titleBlur = e.nativeEvent.path[3]
           if(playlistBlur.classList.contains('blurRemove') && titleBlur.classList.contains('blurRemove')){
             playlistBlur.classList.remove('blurRemove')
             titleBlur.classList.remove("blurRemove")
