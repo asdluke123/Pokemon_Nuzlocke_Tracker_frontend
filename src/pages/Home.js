@@ -77,7 +77,7 @@ const Home = ({user}) =>{
         />
       ): <span></span>}
         <div className="gameContainer">
-          <h1>PokeRun</h1>
+          <h1>PokiRun</h1>
            <h2>Games</h2>
             <div className="gamesContainer">
                 {games.map((game)=>(
