@@ -31,6 +31,7 @@ const Box = () =>{
 return(
     <div id = 'boxPage'>
         <h2>Your Box Pokemon</h2>
+        
         <div className="boxPokemonArea">
             {pokemons.map((pokemon,index) =>(
             <div className = 'boxPokemon'>
@@ -38,6 +39,9 @@ return(
                 <button className="deleteRun" onClick={() =>deleteFromBox(pokemon,index)}>Delete from Box</button>
             </div>
         ))}
+        </div>
+        <div className="buttonDiv">
+        <button className = 'button'onClick={() => window.history.back()}>Back To Run</button>
         </div>
     </div>
 )
