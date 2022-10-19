@@ -6,7 +6,7 @@
 ### [ERD](https://lucid.app/lucidchart/e9c59af8-31ec-4a98-92e8-fb7a693db381/edit?viewport_loc=-91%2C16%2C3108%2C1491%2C0_0&invitationId=inv_22bd3e3e-dd17-4421-a18e-f690c537ea94#)
 ### [Trello](https://trello.com/invite/b/AdCVvEDC/8a21fa56881e53b9ab40fda3b32bda48/project4)
 ### [Linkden](https://www.linkedin.com/in/lukerobinson00/)
-### [GitHub](https://github.com/asdluke123/Pokemon_Nuzlocke_Tracker_frontend)
+### [Backend](https://github.com/asdluke123/Pokemon_Nuzlocke_Tracker_backend)
 ****
 ## Description
 
